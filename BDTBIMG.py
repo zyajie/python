@@ -70,7 +70,6 @@ class BDTB:
         indexPage = self.getPage(1)
         pageNum = self.getPageNum(indexPage)
         title = self.getTitle(indexPage)      #贴吧标题
-        print title
        # self.setFileTitle(title)
         if pageNum == None:
             print "URL已失效，请重试"
