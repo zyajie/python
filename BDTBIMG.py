@@ -5,6 +5,7 @@
 import urllib
 import urllib2
 import re
+import os
 
 
 #百度贴吧爬虫类
@@ -55,15 +56,18 @@ class BDTB:
         else:
             return None
 
-     # 获取帖子内的图片并存储到F:\img
-    def getImg(self, page):
+     # 获取帖子内的图片并存储到D:/ImageDownload
+    def getImg(self, page,title):
         # reg = r'class="BDE_Image" src="(.+?)\.jpg" pic_ext'
         # imgre = re.compile(reg)
+        picpath = 'D:\\ImageDownload\\%s' % (title)
+        if not os.path.exists(picpath):  # 路径不存在时创建一个
+            os.makedirs(picpath)
         imglist = re.findall('class="BDE_Image" src="(.+?)"',page,re.S)
         self.x
         for imgurl in imglist:
-            local = 'F:\\img\\'
-            urllib.urlretrieve(imgurl, local + '%s.jpg' % self.x)
+            #local = 'F:\\img\\'
+            urllib.urlretrieve(imgurl, picpath + '\\%s.jpg' % self.x)
             self.x +=1
 
     def start(self):
@@ -79,7 +83,7 @@ class BDTB:
             for i in range(1,int(pageNum)+1):
                 print "正在写入第" + str(i) + "页数据"
                 page = self.getPage(i)
-                contents = self.getImg(page)
+                contents = self.getImg(page,title)
         #出现写入异常
         except IOError,e:
             print "写入异常，原因" + e.message
