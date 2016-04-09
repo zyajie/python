@@ -1,5 +1,4 @@
 # python
-# python
 # -*- coding:utf8 -*-
 # Create by zhangyajie on 2016/4/8
 import urllib
