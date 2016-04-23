@@ -23,8 +23,8 @@ def renrenBrower(url,page):
         #伪装成一个正常的浏览器，避免有些web服务器拒绝访问。
         opener.addheaders = [('User-agent','Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)')]
         #生成Post数据，含有登陆用户名密码。
-        data = urllib.urlencode({'name':'two_sided_matching@163.com',
-        'password':'zxcasdqwe123'})
+        data = urllib.urlencode({'name':'xxx',
+        'password':'xxxx'})
         #以post的方法访问登陆页面，访问之后cookieJar会自定保存cookie
         opener.open(login_page,data)
         #以带cookie的方式访问页面
